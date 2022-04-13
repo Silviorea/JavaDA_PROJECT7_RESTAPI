@@ -18,7 +18,23 @@
 			<!--
 			TODO: Create a form to input the values of Bid, there are 2 buttons: Save data and Cancel to the list Bid
 			 -->
+			 
+			<input class="form-control mb-4" th:field="*{account}"
+						placeholder="account" required autofocus="autofocus" >
+							
+			<input class="form-control mb-4" th:field="*{type}"
+						placeholder="type" required autofocus="autofocus" >
+							
+			<input class="form-control mb-4" th:field="*{bidQuantity}"
+						placeholder="quantity" required autofocus="autofocus" >
+						
+			<button type="submit" class="btn btn-primary mt-4">Save Data</button>
+			 
 		</form>
+		
+		
+		<a href="/bidList/list" class="btn btn-success">Back to List</a>
+		
 	</div>
 
 </div>
