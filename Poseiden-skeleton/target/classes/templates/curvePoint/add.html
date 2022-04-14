@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Home</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+
+	<div class="row">
+		<h2>Add New Curve Point</h2>
+	</div>
+
+	<div class="row">
+		<form action="#" th:action="@{/curvePoint/validate}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
+			<!--
+			TODO: Create a form to input the values of CurvePoint, there are 2 buttons: Save data and Cancel to the list CurvePoint
+			 -->
+			 
+			 <input class="form-control mb-4" th:field="*{curveId}"
+						placeholder="ID" required autofocus="autofocus" >
+							
+			<input class="form-control mb-4" th:field="*{term}"
+						placeholder="Term" required autofocus="autofocus" >
+							
+			<input class="form-control mb-4" th:field="*{value}"
+						placeholder="Value" required autofocus="autofocus" >
+			
+			<div class="container">
+				<button type="submit" class="btn btn-primary mt-4">Save Data</button>
+				<a href="/curvePoint/list" class="btn btn-success">Back to List</a>
+			</div>			
+			
+
+		</form>
+		
+		
+	</div>
+
+</div>
+</body>
+</html>
