@@ -41,11 +41,11 @@ public class BidListController {
    
      
     @PostMapping("/bidList/validate")		// OK //
-    public String validate(@Valid BidListDTO bid, BindingResult result, Model model) {
+    public String validate(@Valid BidListDTO bidDTO, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return bid list
     	
-    	model.addAttribute("bidList", bid);
-    	bidListService.create(bid);
+    	model.addAttribute("bidList", bidDTO);
+    	bidListService.create(bidDTO);
     	
         return "bidList/add";
     }

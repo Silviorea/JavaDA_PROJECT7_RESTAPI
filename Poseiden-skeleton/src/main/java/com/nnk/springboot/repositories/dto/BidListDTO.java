@@ -10,7 +10,7 @@ public class BidListDTO implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	Integer BidListId;
+	private Integer BidListId;
 	private String account;
 	private String type;
 	private Double bidQuantity;
@@ -24,7 +24,7 @@ public class BidListDTO implements Serializable
 	public BidListDTO(Integer bidListId, String account, String type, Double bidQuantity)
 	{
 		super();
-		BidListId = bidListId;
+		this.BidListId = bidListId;
 		this.account = account;
 		this.type = type;
 		this.bidQuantity = bidQuantity;
