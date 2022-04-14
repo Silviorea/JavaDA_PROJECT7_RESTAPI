@@ -14,12 +14,12 @@ public class CurvePoint {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	Integer curveId;
-	Timestamp asOfDate;
-	Double term;
-	Double value;
-	Timestamp creationDate;
+	private Integer id;
+	private Integer curveId;
+	private Timestamp asOfDate;
+	private Double term;
+	private Double value;
+	private Timestamp creationDate;
 	
 	
 	
