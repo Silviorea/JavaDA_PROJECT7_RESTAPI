@@ -23,9 +23,10 @@ public class CurvePointDTO implements Serializable
 	
 	
 
-	public CurvePointDTO(Integer curveId, Double term, Double value)
+	public CurvePointDTO(Integer id, Integer curveId, Double term, Double value)
 	{
 		super();
+		this.id = id;
 		this.curveId = curveId;
 		this.term = term;
 		this.value = value;

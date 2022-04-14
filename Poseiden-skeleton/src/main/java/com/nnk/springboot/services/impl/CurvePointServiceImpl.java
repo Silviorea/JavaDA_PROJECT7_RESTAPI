@@ -27,6 +27,8 @@ public class CurvePointServiceImpl implements CurvePointService
 				curvePointDTO.getTerm(),
 				curvePointDTO.getValue());
 		
+		curvePointRepo.save(newCurvePoint);
+		
 		return newCurvePoint;
 	}
 
@@ -37,6 +39,7 @@ public class CurvePointServiceImpl implements CurvePointService
 		CurvePoint curvePoint = curvePointRepo.findById(id).get();
 		
 		CurvePointDTO curvePointDTO = new CurvePointDTO(
+				curvePoint.getId(),
 				curvePoint.getCurveId(),
 				curvePoint.getTerm(),
 				curvePoint.getValue());
@@ -55,6 +58,7 @@ public class CurvePointServiceImpl implements CurvePointService
 		for (CurvePoint curveList : list)
 		{
 			listDTO.add( new CurvePointDTO(
+					curveList.getId(),
 					curveList.getCurveId(),
 					curveList.getTerm(),
 					curveList.getValue()));
