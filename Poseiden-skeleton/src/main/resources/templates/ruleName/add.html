@@ -18,6 +18,32 @@
 			<!--
 			TODO: Create a form to input the values of RuleName, there are 2 buttons: Save data and Cancel to the list RuleName
 			 -->
+			 
+			 <input class="form-control mb-4" th:field="*{id}"
+						placeholder="Id" required autofocus="autofocus" >
+							
+			<input class="form-control mb-4" th:field="*{name}"
+						placeholder="Name" required autofocus="autofocus" >
+						
+			<input class="form-control mb-4" th:field="*{description}"
+						placeholder="Description" required autofocus="autofocus" >
+						
+			<input class="form-control mb-4" th:field="*{json}"
+						placeholder="Json" required autofocus="autofocus" >
+						
+			<input class="form-control mb-4" th:field="*{template}"
+						placeholder="Template" required autofocus="autofocus" >
+						
+			<input class="form-control mb-4" th:field="*{sqlStr}"
+						placeholder="SqlStr" required autofocus="autofocus" >
+						
+			<input class="form-control mb-4" th:field="*{sqlPart}"
+						placeholder="SqlPart" required autofocus="autofocus" >
+					
+			<div class="container">
+				<button type="submit" class="btn btn-primary mt-4">Save Data</button>
+				<a href="/ruleName/list" class="btn btn-success">Back to List</a>
+			</div>	
 
 		</form>
 	</div>

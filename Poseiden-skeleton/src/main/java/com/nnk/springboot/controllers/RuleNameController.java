@@ -1,6 +1,10 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.RuleName;
+import com.nnk.springboot.repositories.dto.RuleNameDTO;
+import com.nnk.springboot.services.RuleNameService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,12 +17,15 @@ import javax.validation.Valid;
 
 @Controller
 public class RuleNameController {
-    // TODO: Inject RuleName service
+
+	@Autowired
+	RuleNameService ruleNameService;
 
     @RequestMapping("/ruleName/list")
     public String home(Model model)
     {
         // TODO: find all RuleName, add to model
+    	model.addAttribute("ruleName", ruleNameService.readAll());
         return "ruleName/list";
     }
 
@@ -28,8 +35,11 @@ public class RuleNameController {
     }
 
     @PostMapping("/ruleName/validate")
-    public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
+    public String validate(@Valid RuleNameDTO ruleNameDTO, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return RuleName list
+    	
+    	model.addAttribute("ruleName", ruleNameDTO);
+    	ruleNameService.create(ruleNameDTO);
         return "ruleName/add";
     }
 
@@ -49,6 +59,7 @@ public class RuleNameController {
     @GetMapping("/ruleName/delete/{id}")
     public String deleteRuleName(@PathVariable("id") Integer id, Model model) {
         // TODO: Find RuleName by Id and delete the RuleName, return to Rule list
+    	ruleNameService.delete(id);
         return "redirect:/ruleName/list";
     }
 }
