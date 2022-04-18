@@ -18,6 +18,20 @@
 			<!--
 			TODO: Create a form to input the values of Trade, there are 2 buttons: Save data and Cancel to the list Trade
 			 -->
+							
+			<input class="form-control mb-4" th:field="*{account}"
+						placeholder="Term" required autofocus="autofocus" >
+							
+			<input class="form-control mb-4" th:field="*{type}"
+						placeholder="Value" required autofocus="autofocus" >
+						
+			<input class="form-control mb-4" th:field="*{buyQuantity}"
+						placeholder="Value" required autofocus="autofocus" >
+			
+			<div class="container">
+				<button type="submit" class="btn btn-primary mt-4">Save Data</button>
+				<a href="/trade/list" class="btn btn-success">Back to List</a>
+			</div>	
 
 		</form>
 	</div>
