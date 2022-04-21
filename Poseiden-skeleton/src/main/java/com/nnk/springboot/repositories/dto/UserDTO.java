@@ -11,7 +11,8 @@ public class UserDTO implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+		
+		private Integer userId;
 	    private String username;
 	    private String password;
 	    private String fullname;
@@ -30,13 +31,32 @@ public class UserDTO implements Serializable
 
 
 
-		public UserDTO(String username, String password, String fullname, String role)
+		public UserDTO(Integer userId, String username, String password, String fullname, String role)
 		{
 			super();
+			this.userId = userId;
 			this.username = username;
 			this.password = password;
 			this.fullname = fullname;
 			this.role = role;
+		}
+
+
+
+
+
+		public Integer getUserId()
+		{
+			return userId;
+		}
+
+
+
+
+
+		public void setUserId(Integer userId)
+		{
+			this.userId = userId;
 		}
 
 
