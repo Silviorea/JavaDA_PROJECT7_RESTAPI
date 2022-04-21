@@ -17,6 +17,38 @@
 			<!--
 			TODO: Create a form to edit the values of CurvePoint, there are 2 buttons: Update data and Cancel to the Curve Point
 			 -->
+			 
+			 <div class="form-group">
+				<label for="curveId" class="col-sm-2 control-label">curveId</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{curveId}" id="curveId" name="curveId" placeholder="curveId" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('curveId')}" th:errors="*{curveId}"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="type" class="col-sm-2 control-label">term</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{term}" id="type" name="term" placeholder="term" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="bidQuantity" class="col-sm-2 control-label">value</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{value}" id="value" name="value" placeholder="value" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<input type="hidden" th:field="*{id}">
+					<a class="btn btn-danger btn-sm" href="/curvePoint/list">Cancel</a>
+					<input class="btn btn-primary btn-sm" type="submit" value="Update curvePoint">
+				</div>
+			</div>
+			 
 		</form>
 	</div>
 

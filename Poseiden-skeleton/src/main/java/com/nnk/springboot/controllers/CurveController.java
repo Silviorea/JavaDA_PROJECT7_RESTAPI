@@ -47,13 +47,20 @@ public class CurveController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get CurvePoint by Id and to model then show to the form
     	
+    	model.addAttribute("curvePoint", curvePointService.read(id).get());
         return "curvePoint/update";
     }
 
     @PostMapping("/curvePoint/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
-                             BindingResult result, Model model) {
+                             BindingResult result, Model model,
+                             Integer curveId, Double term, Double value) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
+    	
+    	model.addAttribute("curvePoint", curvePointService.read(id).get());
+    	
+    	curvePointService.update(id, curveId, term, value);
+    	
         return "redirect:/curvePoint/list";
     }
 
