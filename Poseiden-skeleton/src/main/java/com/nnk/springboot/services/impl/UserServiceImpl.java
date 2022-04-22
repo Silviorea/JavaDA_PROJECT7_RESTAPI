@@ -28,18 +28,23 @@ public class UserServiceImpl implements UserService
 	@Autowired
 	UserRepository userRepository;
 	
-	@Lazy
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+
 
 	@Override
 	public User create(UserDTO userDTO)
 	{
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
 		User newUser = new User(
 				userDTO.getUsername(),
 				passwordEncoder.encode(userDTO.getPassword()),
 				userDTO.getFullname(),
 				userDTO.getRole());
+		
+		
+		userRepository.save(newUser);
+		
 		return newUser;
 	}
 
@@ -68,6 +73,8 @@ public class UserServiceImpl implements UserService
 		user.setFullname(fullName);
 		user.setPassword(password);
 		user.setRole(role);
+		
+		userRepository.save(user);
 		
 		return user;
 	}

@@ -45,6 +45,12 @@ public class UserDTO implements Serializable
 
 
 
+	
+
+
+
+
+
 		public Integer getUserId()
 		{
 			return userId;

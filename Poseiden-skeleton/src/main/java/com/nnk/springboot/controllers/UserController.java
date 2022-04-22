@@ -19,9 +19,6 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
-	
-    @Autowired
-    private UserRepository userRepository;
     
     @Autowired
     private UserService userService;
@@ -30,50 +27,48 @@ public class UserController {
     @RequestMapping("/user/list")
     public String home(Model model)
     {
-        model.addAttribute("users", userService.readAll());
+        model.addAttribute("user", userService.readAll());
         return "user/list";
     }
 
     @GetMapping("/user/add")
-    public String addUser(User bid) {
+    public String addUser(User user) {
         return "user/add";
     }
 
     @PostMapping("/user/validate")
     public String validate(@Valid UserDTO userDTO, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
-            
-            model.addAttribute("users", userDTO);
+      
+            model.addAttribute("user", userDTO);
             userService.create(userDTO);
             
             return "redirect:/user/list";
-        }
-        return "user/add";
+       
     }
 
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         
-        model.addAttribute("users", userService.read(id).get());
+        model.addAttribute("user", userService.read(id).get());
         return "user/update";
     }
 
     ////////////////////////////////////
-    ///////  UPDATE A FAIRE /////////////////////////
+    ///////  UPDATE A FAIRE ////////////
     ////////////////////////////////////
     
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid User user,
-                             BindingResult result, Model model) {
+                             BindingResult result, Model model,
+                             String username, String password, String fullname, String role) {
         if (result.hasErrors()) {
             return "user/update";
         }
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setId(id);
-        userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("user", userService.read(id).get());
+        
+        userService.update(id, username, fullname, password, role);
+       
         return "redirect:/user/list";
     }
 
