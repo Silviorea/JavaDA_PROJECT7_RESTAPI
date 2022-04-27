@@ -53,9 +53,6 @@ public class UserController {
         return "user/update";
     }
 
-    ////////////////////////////////////
-    ///////  UPDATE A FAIRE ////////////
-    ////////////////////////////////////
     
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid User user,

@@ -66,9 +66,9 @@ public class UserServiceImpl implements UserService
 
 
 	@Override
-	public User update(Integer userID, String userName, String fullName, String password, String role)
+	public User update(Integer id, String userName, String fullName, String password, String role)
 	{
-		User user = userRepository.findById(userID).get();
+		User user = userRepository.findById(id).get();
 		user.setUsername(userName);
 		user.setFullname(fullName);
 		user.setPassword(password);
@@ -80,9 +80,9 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public void delete(Integer userID)
+	public void delete(Integer id)
 	{
-		userRepository.deleteById(userID);
+		userRepository.deleteById(id);
 		
 	}
 
@@ -110,22 +110,21 @@ public class UserServiceImpl implements UserService
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
-		return null;
 		
-//		User user = userRepository.findByUsername(username);
-//		
-//		if (user == null)
-//		{
-//			throw new UsernameNotFoundException("Invalid username or invalid Password");
-//		} 
-//		return new org.springframework.security.core.userdetails.User
-//				(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRole()));
+		User user = userRepository.findByUsername(username);
+		
+		if (user == null)
+		{
+			throw new UsernameNotFoundException("Invalid username or invalid Password");
+		} 
+		return new org.springframework.security.core.userdetails.User
+				(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRole()));
 		
 		
 	}
 	
 	
-	private Collection <? extends GrantedAuthority> mapRolesToAuthorities (Collection<String> roles)
+	private Collection <? extends GrantedAuthority> mapRolesToAuthorities (String role)
 	{
 		
 //		roles.stream()
@@ -133,7 +132,10 @@ public class UserServiceImpl implements UserService
 //		.collect(Collectors.toList());
 		
 		
-		return null;
+		List<SimpleGrantedAuthority> authorithies = new ArrayList<>();
+	    authorithies.add(new SimpleGrantedAuthority(role));
+		return authorithies;
+		
 		
 	}
 

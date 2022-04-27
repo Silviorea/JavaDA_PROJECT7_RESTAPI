@@ -31,13 +31,13 @@
 			</thead>
 			<tbody>
 				<tr th:each="user : ${user}">
-					<td style="width: 10%" th:text="${user.getUserId()}"></td>
+					<td style="width: 10%" th:text="${user.getId()}"></td>
 					<td th:text="${user.getFullname()}"></td>
 					<td th:text="${user.getUsername()}"></td>
 					<td style="width: 25%" th:text="${user.getRole()}"></td>
 					<td style="width: 15%" class="text-center">
-						<a th:href="@{/user/update/{id}(id=${user.getUserId()})}">Edit</a>&nbsp;|&nbsp;
-						<a th:href="@{/user/delete/{id}(id=${user.getUserId()})}">Delete</a>
+						<a th:href="@{/user/update/{id}(id=${user.getId()})}">Edit</a>&nbsp;|&nbsp;
+						<a th:href="@{/user/delete/{id}(id=${user.getId()})}">Delete</a>
 					</td>
 				</tr>
 			</tbody>
