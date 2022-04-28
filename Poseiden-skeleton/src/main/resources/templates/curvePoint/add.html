@@ -18,20 +18,28 @@
 			<!--
 			TODO: Create a form to input the values of CurvePoint, there are 2 buttons: Save data and Cancel to the list CurvePoint
 			 -->
+			 <div>
+			 		<input class="form-control mb-4" th:field="*{curveId}" placeholder="ID" required autofocus="autofocus" >
+					<p class="text-danger" th:if="${#fields.hasErrors('curveId')}" th:errors="*{curveId}"></p>
+			 </div>
 			 
-			 <input class="form-control mb-4" th:field="*{curveId}"
-						placeholder="ID" required autofocus="autofocus" >
-							
-			<input class="form-control mb-4" th:field="*{term}"
-						placeholder="Term" required autofocus="autofocus" >
-							
-			<input class="form-control mb-4" th:field="*{value}"
-						placeholder="Value" required autofocus="autofocus" >
+			<div>
+					<input class="form-control mb-4" th:field="*{term}" placeholder="Term" required autofocus="autofocus" >
+					<p class="text-danger" th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></p>
+			</div>	
+				
+			<div>
+					<input class="form-control mb-4" th:field="*{value}" placeholder="Value" required autofocus="autofocus" >
+					<p class="text-danger" th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
+			</div>				
 			
-			<div class="container">
-				<button type="submit" class="btn btn-primary mt-4">Save Data</button>
-				<a href="/curvePoint/list" class="btn btn-success">Back to List</a>
-			</div>			
+			<div class="form-group">
+					<div class="col-sm-12">
+						<input class="btn btn-primary btn-sm" type="submit"
+							value="Save Curve"> 
+						<a class="btn btn-danger btn-sm" href="/curvePoint/list">Back to List</a>
+					</div>
+			</div>		
 			
 
 		</form>

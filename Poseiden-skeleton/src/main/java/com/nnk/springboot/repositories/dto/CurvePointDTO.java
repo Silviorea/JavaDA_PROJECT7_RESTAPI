@@ -3,6 +3,9 @@ package com.nnk.springboot.repositories.dto;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 public class CurvePointDTO implements Serializable
 {
 
@@ -12,10 +15,21 @@ public class CurvePointDTO implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
+	@NotNull(message = "Id is mandatory")
+	@Positive(message = "Id is positive number")
 	private Integer curveId;
+	
 	private Timestamp asOfDate;
+	
+	@NotNull(message = "Term is mandatory")
+	@Positive(message = "Term is positive number")
 	private Double term;
+	
+	@NotNull(message = "Value is mandatory")
+	@Positive(message = "Value is positive number")
 	private Double value;
+	
 	private Timestamp creationDate;
 	
 	

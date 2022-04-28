@@ -37,6 +37,11 @@ public class CurveController {
     public String validate(@Valid CurvePointDTO curvePoint, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list
     	
+    	if (result.hasErrors()) {
+            return "curvePoint/add";
+        }
+    	
+    	
     	model.addAttribute("curvePoint", curvePoint);
     	curvePointService.create(curvePoint);
     	
@@ -57,10 +62,12 @@ public class CurveController {
                              Integer curveId, Double term, Double value) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
     	
+    	if (result.hasErrors()) {
+            return "curvePoint/add";
+        }
+    	
     	model.addAttribute("curvePoint", curvePointService.read(id).get());
-    	
     	curvePointService.update(id, curveId, term, value);
-    	
         return "redirect:/curvePoint/list";
     }
 
