@@ -2,6 +2,8 @@ package com.nnk.springboot.repositories.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 public class RuleNameDTO implements Serializable
 {
 
@@ -11,11 +13,17 @@ public class RuleNameDTO implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	@NotEmpty(message = "Name is mandatory")
 	private String name;
+	@NotEmpty(message = "Description is mandatory")
 	private String description;
+	@NotEmpty(message = "Json is mandatory")
 	private String json;
+	@NotEmpty(message = "Template is mandatory")
 	private String template;
+	@NotEmpty(message = "Sql STR is mandatory")
 	private String sqlStr;
+	@NotEmpty(message = "Sql Part is mandatory")
 	private String sqlPart;
 	
 	

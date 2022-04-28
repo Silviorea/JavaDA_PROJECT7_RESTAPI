@@ -38,6 +38,10 @@ public class RuleNameController {
     public String validate(@Valid RuleNameDTO ruleNameDTO, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return RuleName list
     	
+    	if (result.hasErrors()) {
+            return "/ruleName/add";
+        }
+    	
     	model.addAttribute("ruleName", ruleNameDTO);
     	ruleNameService.create(ruleNameDTO);
         return "ruleName/add";
@@ -57,9 +61,12 @@ public class RuleNameController {
                              String sqlStr, String sqlPart) {
         // TODO: check required fields, if valid call service to update RuleName and return RuleName list
     	
+    	if (result.hasErrors()) {
+            return "/ruleName/update";
+        }
+    	
     	model.addAttribute("ruleName", ruleNameService.read(id).get());
     	ruleNameService.update(id, name, description, json, template, sqlStr, sqlPart);
-    	
         return "redirect:/ruleName/list";
     }
 

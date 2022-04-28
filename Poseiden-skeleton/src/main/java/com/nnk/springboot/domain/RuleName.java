@@ -2,6 +2,8 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 import java.sql.Timestamp;
 
 @Entity
@@ -11,11 +13,17 @@ public class RuleName {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@NotEmpty(message = "Name is mandatory")
 	private String name;
+	@NotEmpty(message = "Description is mandatory")
 	private String description;
+	@NotEmpty(message = "Json is mandatory")
 	private String json;
+	@NotEmpty(message = "Template is mandatory")
 	private String template;
+	@NotEmpty(message = "Sql STR is mandatory")
 	private String sqlStr;
+	@NotEmpty(message = "Sql Part is mandatory")
 	private String sqlPart;
 	
 	
