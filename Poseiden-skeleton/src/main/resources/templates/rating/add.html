@@ -1,44 +1,70 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
+	<div class="container">
 
-	<div class="row">
-		<h2>Add New Rating</h2>
-	</div>
+		<div class="row">
+			<h2>Add New Rating</h2>
+		</div>
 
-	<div class="row">
-		<form action="#" th:action="@{/rating/validate}" th:object="${rating}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
+		<div class="row">
+			<form action="#" th:action="@{/rating/validate}"
+				th:object="${rating}" method="post" class="form-horizontal"
+				style="width: 100%">
+				<!--
 			TODO: Create a form to input the values of Rating, there are 2 buttons: Save data and Cancel to the list Rating
 			 -->
-							
-			<input class="form-control mb-4" th:field="*{moodysRating}"
-						placeholder="moodysRating" required autofocus="autofocus" >
-							
-			<input class="form-control mb-4" th:field="*{sandPRating}"
-						placeholder="sandPRating" required autofocus="autofocus" >
-						
-			<input class="form-control mb-4" th:field="*{fitchRating}"
-						placeholder="fitchRating" required autofocus="autofocus" >
-						
-			<input class="form-control mb-4" th:field="*{orderNumber}"
-						placeholder="orderNumber" required autofocus="autofocus" >
-					
-			<div class="container">
-				<button type="submit" class="btn btn-primary mt-4">Save Data</button>
-				<a href="/rating/list" class="btn btn-success">Back to List</a>
-			</div>	
 
-		</form>
+				<div>
+					<input class="form-control mb-4" th:field="*{moodysRating}"
+						placeholder="moodysRating" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('moodysRating')}"
+						th:errors="*{moodysRating}"></p>
+
+				</div>
+
+				<div>
+					<input class="form-control mb-4" th:field="*{sandPRating}"
+						placeholder="sandPRating" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('sandPRating')}"
+						th:errors="*{sandPRating}"></p>
+
+				</div>
+
+				<div>
+					<input class="form-control mb-4" th:field="*{fitchRating}"
+						placeholder="fitchRating" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('fitchRating')}"
+						th:errors="*{fitchRating}"></p>
+
+				</div>
+
+				<div>
+					<input class="form-control mb-4" th:field="*{orderNumber}"
+						placeholder="orderNumber" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('orderNumber')}"
+						th:errors="*{orderNumber}"></p>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="hidden" th:field="*{id}"> <a
+							class="btn btn-danger btn-sm" href="/rating/list">Cancel</a>
+						<input class="btn btn-primary btn-sm" type="submit"
+							value="Update Rating">
+					</div>
+				</div>
+
+			</form>
+		</div>
+
 	</div>
-
-</div>
 </body>
 </html>

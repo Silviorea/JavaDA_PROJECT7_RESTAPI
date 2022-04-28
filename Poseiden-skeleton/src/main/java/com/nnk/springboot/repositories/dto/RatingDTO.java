@@ -2,6 +2,10 @@ package com.nnk.springboot.repositories.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 public class RatingDTO implements Serializable
 {
 
@@ -11,9 +15,18 @@ public class RatingDTO implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
+	@NotEmpty(message = "Moodys Rating is mandatory")
 	private String moodysRating;
+	
+	@NotEmpty(message = "Sand Rating is mandatory")
 	private String sandPRating;
+	
+	@NotEmpty(message = "Fitch Rating is mandatory")
 	private String fitchRating;
+	
+	@NotNull(message = "Bid Quantity is mandatory")
+	@Positive(message = "Bid Quantity is positive number")
 	private Integer orderNumber;
 	
 	

@@ -2,7 +2,10 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import java.sql.Timestamp;
 
 @Entity
@@ -12,9 +15,18 @@ public class Rating {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NotEmpty(message = "Moodys Rating is mandatory")
 	private String moodysRating;
+	
+	@NotEmpty(message = "Sand Rating is mandatory")
 	private String sandPRating;
+	
+	@NotEmpty(message = "Fitch Rating is mandatory")
 	private String fitchRating;
+	
+	@NotNull(message = "Bid Quantity is mandatory")
+	@Positive(message = "Bid Quantity is positive number")
 	private Integer orderNumber;
 	
 	

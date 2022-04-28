@@ -38,9 +38,12 @@ public class RatingController {
     public String validate(@Valid RatingDTO ratingDTO, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Rating list
     	
+    	if (result.hasErrors()) {
+            return "/rating/add";
+        }
+    	
     	model.addAttribute("rating", ratingDTO);
     	ratingService.create(ratingDTO);
-    	
         return "rating/add";
     }
 
@@ -49,7 +52,6 @@ public class RatingController {
         // TODO: get Rating by Id and to model then show to the form
     	
     	model.addAttribute("rating", ratingService.read(id).get());
-    	
         return "rating/update";
     }
 
@@ -59,10 +61,12 @@ public class RatingController {
                              String moodysRating, String sandPRating, String fitchRating, Integer orderNumber) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
     	
+    	if (result.hasErrors()) {
+            return "/rating/update";
+        }
+    	
     	model.addAttribute("rating", ratingService.read(id).get());
-    	
     	ratingService.update(id, moodysRating, sandPRating, fitchRating, orderNumber);
-    	
         return "redirect:/rating/list";
     }
 
