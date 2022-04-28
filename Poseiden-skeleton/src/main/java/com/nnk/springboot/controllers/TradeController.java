@@ -38,9 +38,12 @@ public class TradeController {
     public String validate(@Valid TradeDTO trade, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Trade list
        
+    	if (result.hasErrors()) {
+            return "/trade/add";
+        }
+    	
     	model.addAttribute("trade", trade);
     	tradeService.create(trade);
-    	
     	return "trade/add";
     }
 
@@ -59,9 +62,12 @@ public class TradeController {
                              String account, String type, Double buyQuantity) {
         // TODO: check required fields, if valid call service to update Trade and return Trade list
     	
+    	if (result.hasErrors()) {
+            return "/trade/update";
+        }
+    	
     	model.addAttribute("trade", tradeService.read(id).get());
     	tradeService.update(id, account, type, buyQuantity);
-    	
         return "redirect:/trade/list";
     }
 

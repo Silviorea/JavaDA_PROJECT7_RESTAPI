@@ -1,41 +1,58 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
+	<div class="container">
 
-	<div class="row">
-		<h2>Add New Trade</h2>
-	</div>
+		<div class="row">
+			<h2>Add New Trade</h2>
+		</div>
 
-	<div class="row">
-		<form action="#" th:action="@{/trade/validate}" th:object="${trade}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
+		<div class="row">
+			<form action="#" th:action="@{/trade/validate}" th:object="${trade}"
+				method="post" class="form-horizontal" style="width: 100%">
+				<!--
 			TODO: Create a form to input the values of Trade, there are 2 buttons: Save data and Cancel to the list Trade
 			 -->
-							
-			<input class="form-control mb-4" th:field="*{account}"
-						placeholder="account" required autofocus="autofocus" >
-							
-			<input class="form-control mb-4" th:field="*{type}"
-						placeholder="type" required autofocus="autofocus" >
-						
-			<input class="form-control mb-4" th:field="*{buyQuantity}"
-						placeholder="quantity" required autofocus="autofocus" >
-			
-			<div class="container">
-				<button type="submit" class="btn btn-primary mt-4">Save Data</button>
-				<a href="/trade/list" class="btn btn-success">Back to List</a>
-			</div>	
 
-		</form>
+				<div>
+					<input class="form-control mb-4" th:field="*{account}"
+						placeholder="account" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('account')}"
+						th:errors="*{account}"></p>
+				</div>
+
+				<div>
+					<input class="form-control mb-4" th:field="*{type}"
+						placeholder="type" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('type')}"
+						th:errors="*{type}"></p>
+				</div>
+
+				<div>
+					<input class="form-control mb-4" th:field="*{buyQuantity}"
+						placeholder="quantity" required autofocus="autofocus">
+					<p class="text-danger" th:if="${#fields.hasErrors('buyQuantity')}"
+						th:errors="*{buyQuantity}"></p>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input class="btn btn-primary btn-sm" type="submit"
+							value="Save Trade"> <a class="btn btn-danger btn-sm"
+							href="/trade/list">Back to List</a>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
 	</div>
-
-</div>
 </body>
 </html>
