@@ -46,10 +46,28 @@ public class BidListController {
     public String validate(@Valid BidListDTO bidDTO, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return bid list
     	
+    	if (result.hasErrors()) {
+            return "bidList/add";
+        }
     	model.addAttribute("bidList", bidDTO);
     	bidListService.create(bidDTO);
     	
         return "bidList/add";
+    }
+    
+    @PostMapping("/bidList/update/{id}")
+    public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
+                             BindingResult result, Model model, 
+                             String account, String type, Double bidQuantity) {
+        // TODO: check required fields, if valid call service to update Bid and return list Bid
+    	
+    	if (result.hasErrors()) {
+            return "bidList/update";
+        }
+    	
+    	model.addAttribute("bidList", bidListService.read(id).get());
+    	bidListService.update(id, account, type, bidQuantity);
+        return "redirect:/bidList/list";
     }
 
     
@@ -62,22 +80,6 @@ public class BidListController {
     	
         return "bidList/update";
     }
-
-    
-    
-    @PostMapping("/bidList/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
-                             BindingResult result, Model model, 
-                             String account, String type, Double bidQuantity) {
-        // TODO: check required fields, if valid call service to update Bid and return list Bid
-    	
-    	model.addAttribute("bidList", bidListService.read(id).get());
-    	
-    	bidListService.update(id, account, type, bidQuantity);
-    	
-        return "redirect:/bidList/list";
-    }
-
     
     
     @GetMapping("/bidList/delete/{id}")

@@ -2,6 +2,11 @@ package com.nnk.springboot.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import java.sql.Timestamp;
 
 @Entity
@@ -10,49 +15,53 @@ public class BidList
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer BidListId;
+	private Integer BidListId;
 	
-	String account;
+	@NotEmpty(message = "Account is mandatory")
+	private String account;
 	
-	String type;
+	@NotEmpty(message = "Type is mandatory")
+	private String type;
 	
-	Double bidQuantity;
+	@NotNull(message = "Bid Quantity is mandatory")
+	@Positive(message = "Bid Quantity is positive number")
+	private Double bidQuantity;
 	
-	Double askQuantity;
+	private Double askQuantity;
 	
-	Double bid;
+	private Double bid;
 	
-	Double ask;
+	private Double ask;
 	
-	String benchmark;
+	private String benchmark;
 	
-	Timestamp bidListDate;
+	private Timestamp bidListDate;
 	
-	String commentary;
+	private String commentary;
 	
-	String security;
+	private String security;
 	
-	String status;
+	private String status;
 	
-	String trader;
+	private String trader;
 	
-	String book;
+	private String book;
 	
-	String creationName;
+	private String creationName;
 	
-	Timestamp creationDate;
+	private Timestamp creationDate;
 	
-	String revisionName;
+	private String revisionName;
 	
-	Timestamp revisionDate;
+	private Timestamp revisionDate;
 	
-	String dealName;
+	private String dealName;
 	
-	String dealType;
+	private String dealType;
 	
-	String sourceListId;
+	private String sourceListId;
 	
-	String side;
+	private String side;
 	
 	
 	

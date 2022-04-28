@@ -2,6 +2,11 @@ package com.nnk.springboot.repositories.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
+
 public class BidListDTO implements Serializable
 {
 
@@ -11,8 +16,15 @@ public class BidListDTO implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Integer BidListId;
+	
+	@NotEmpty(message = "Account is mandatory")  
 	private String account;
+	
+	@NotEmpty(message = "Type is mandatory")
 	private String type;
+	
+	@NotNull(message = "Bid Quantity is mandatory")
+	@PositiveOrZero(message = "Bid Quantity is positive number")
 	private Double bidQuantity;
 	
 	
