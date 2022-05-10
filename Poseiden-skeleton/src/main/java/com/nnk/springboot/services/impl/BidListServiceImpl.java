@@ -34,6 +34,8 @@ public class BidListServiceImpl implements BidListService
 		
 		return newBidList;
 	}
+	
+	
 
 	
 	@Override
@@ -71,21 +73,6 @@ public class BidListServiceImpl implements BidListService
 	}
 
 	
-	@Override
-	public BidList update(Integer bidListID, String account, String type, Double bidQuantity)
-	{
-		BidList bidList = bidListRepository.findById(bidListID).get();
-		bidList.setAccount(account);
-		bidList.setType(type);
-		bidList.setBidQuantity(bidQuantity);
-		
-		bidListRepository.save(bidList);
-		
-		return bidList;
-	}
-
-	
-	
 	
 	@Override
 	public void delete (Integer id)
@@ -94,8 +81,37 @@ public class BidListServiceImpl implements BidListService
 	}
 	
 	
+	@Override
+	public BidList update(Integer bidListID, BidListDTO blDTO)
+	{
+		BidList bidList = bidListRepository.findById(bidListID).get();
+		
+		// blDTO.setBidListId(bidListID);
+		
+		//bidList.setBidListId(blDTO.getBidListId());
+		
+		bidList.setAccount(blDTO.getAccount());
+		bidList.setType(blDTO.getType());
+		bidList.setBidQuantity(blDTO.getBidQuantity());
+		
+		bidListRepository.save(bidList);
+		
+		return bidList;
+	}
 	
 	
+//	@Override
+//	public BidList update(Integer bidListID, String account, String type, Double bidQuantity)
+//	{
+//		BidList bidList = bidListRepository.findById(bidListID).get();
+//		bidList.setAccount(account);
+//		bidList.setType(type);
+//		bidList.setBidQuantity(bidQuantity);
+//		
+//		bidListRepository.save(bidList);
+//		
+//		return bidList;
+//	}
 	
 
 }

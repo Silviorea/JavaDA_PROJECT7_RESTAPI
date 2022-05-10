@@ -10,7 +10,11 @@ public interface BidListService
 {
 	public BidList create (BidListDTO bidListDTO);
 	public Optional<BidListDTO> read (Integer id);
-	public BidList update(Integer bidListID, String account, String type, Double bidQuantity);
+	
+	
+	public BidList update(Integer bidListID, BidListDTO blDTO);
+	
+	
 	public void delete (Integer id);
 	
 	public List<BidListDTO> readAll();

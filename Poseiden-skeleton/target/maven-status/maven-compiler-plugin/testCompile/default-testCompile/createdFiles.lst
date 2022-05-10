@@ -1,0 +1,12 @@
+com\nnk\springboot\service\RuleNameServiceTest.class
+com\nnk\springboot\service\BidListServiceTest.class
+com\nnk\springboot\repository\CurvePointTests.class
+com\nnk\springboot\service\TradeServiceTest.class
+com\nnk\springboot\service\UserServiceTest.class
+com\nnk\springboot\repository\TradeTests.class
+com\nnk\springboot\repository\BidTests.class
+com\nnk\springboot\repository\RatingTests.class
+com\nnk\springboot\service\RatingServiceTest.class
+com\nnk\springboot\repository\PasswordEncodeTest.class
+com\nnk\springboot\repository\RuleTests.class
+com\nnk\springboot\service\CurvePointServiceTest.class

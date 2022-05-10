@@ -22,21 +22,21 @@
 			 -->
 				<div>
 					<input class="form-control mb-4" th:field="*{account}"
-						placeholder="account" required autofocus="autofocus">
+						placeholder="account" name="account" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('account')}"
 						th:errors="*{account}"></p>
 				</div>
 
 				<div>
 					<input class="form-control mb-4" th:field="*{type}"
-						placeholder="type" required autofocus="autofocus">
+						placeholder="type" name="type" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('type')}"
 						th:errors="*{type}"></p>
 				</div>
 
 				<div>
 					<input class="form-control mb-4" th:field="*{bidQuantity}"
-						placeholder="quantity" required autofocus="autofocus">
+						placeholder="quantity" name="bidQuantity" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('bidQuantity')}"
 						th:errors="*{bidQuantity}"></p>
 				</div>

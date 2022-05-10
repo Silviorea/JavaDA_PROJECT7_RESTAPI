@@ -39,6 +39,10 @@ public class UserController {
     @PostMapping("/user/validate")
     public String validate(@Valid UserDTO userDTO, BindingResult result, Model model) {
       
+    	if (result.hasErrors()) {
+            return "user/add";
+        }
+    	
             model.addAttribute("user", userDTO);
             userService.create(userDTO);
             

@@ -41,16 +41,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				"/app-logout").permitAll()
 		.anyRequest().authenticated()
 		.and()
-		.formLogin()
+		.formLogin().defaultSuccessUrl("/bidList/list", true)
 //		.loginPage("/login")
-		.permitAll()
 		.and()
 		.logout()
 		.invalidateHttpSession(true)
 		.clearAuthentication(true)
 		.logoutRequestMatcher(new AntPathRequestMatcher("/app-logout"))
 		.logoutSuccessUrl("/login")
-		.permitAll();
+		
+		
+		.and().oauth2Login().defaultSuccessUrl("/bidList/list", true)
+		
+		;
 	}
 	
 	@Bean
@@ -67,5 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		auth.authenticationProvider(authenticationProvider());
 	}
+	
+	
 
 }

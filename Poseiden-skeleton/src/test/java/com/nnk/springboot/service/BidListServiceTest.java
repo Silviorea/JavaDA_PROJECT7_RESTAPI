@@ -56,8 +56,8 @@ public class BidListServiceTest
 	public void updateTestMethod() throws Exception
 	{
 		when(bdRepo.findById(1)).thenReturn(Optional.of(bdTest));
-		BidList bidListUpdate = bdService.update(1, "AccountUPDATETest", "TypeUPDATETest", 7.7);
-		assertEquals("AccountUPDATETest", bidListUpdate.getAccount());
+		BidList bidListUpdate = bdService.update(1, bdDTOTest);
+		assertEquals("AccountTest", bidListUpdate.getAccount());
 
 	}
 	

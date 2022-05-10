@@ -15,7 +15,8 @@ public class BidList
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer BidListId;
+	@Column(name= "BidListId")
+	private Integer bidListId;
 	
 	@NotEmpty(message = "Account is mandatory")
 	private String account;
@@ -95,7 +96,7 @@ public class BidList
 
 	public Integer getBidListId()
 	{
-		return BidListId;
+		return bidListId;
 	}
 
 
@@ -103,7 +104,7 @@ public class BidList
 
 	public void setBidListId(Integer bidListId)
 	{
-		BidListId = bidListId;
+		this.bidListId = bidListId;
 	}
 
 
