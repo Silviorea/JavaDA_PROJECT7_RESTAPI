@@ -8,6 +8,12 @@ import javax.validation.constraints.Positive;
 import java.sql.Timestamp;
 
 
+/**
+ * Trade ENTITY
+ * @author Silvio
+ *
+ */
+
 @Entity
 @Table(name = "trade")
 public class Trade {
@@ -16,12 +22,8 @@ public class Trade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "tradeId")
 	private Integer tradeId;
-	@NotEmpty(message = "Account is mandatory")
 	private String account;
-	@NotEmpty(message = "Type is mandatory")
 	private String type;
-	@NotNull(message = "Buy Quantity is mandatory")
-	@Positive(message = "Buy Quantity is positive number")
 	private Double buyQuantity;
 	private Double sellQuantity;
 	private Double buyPrice;

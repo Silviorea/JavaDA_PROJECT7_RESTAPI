@@ -1,10 +1,7 @@
 package com.nnk.springboot.service;
 
-import static org.hamcrest.CoreMatchers.any;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.anything;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +55,6 @@ public class BidListServiceTest
 		when(bdRepo.findById(1)).thenReturn(Optional.of(bdTest));
 		BidList bidListUpdate = bdService.update(1, bdDTOTest);
 		assertEquals("AccountTest", bidListUpdate.getAccount());
-
 	}
 	
 	@Test

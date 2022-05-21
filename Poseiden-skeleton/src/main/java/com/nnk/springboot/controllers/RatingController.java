@@ -9,11 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+
+/**
+ * Rating Controller class which call Services crud methods
+ * @author Silvio
+ *
+ */
 
 @Controller
 public class RatingController {
@@ -30,7 +37,7 @@ public class RatingController {
     }
 
     @GetMapping("/rating/add")
-    public String addRatingForm(Rating rating) {
+    public String addRatingForm(RatingDTO ratingDTO) {
         return "rating/add";
     }
 
@@ -42,31 +49,28 @@ public class RatingController {
             return "/rating/add";
         }
     	
-    	model.addAttribute("rating", ratingDTO);
     	ratingService.create(ratingDTO);
-        return "rating/add";
+        return "redirect:/rating/list";
     }
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Rating by Id and to model then show to the form
     	
-    	model.addAttribute("rating", ratingService.read(id).get());
+    	model.addAttribute("ratingDTO", ratingService.read(id).get());
         return "rating/update";
     }
 
     @PostMapping("/rating/update/{id}")
-    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
-                             BindingResult result, Model model,
-                             String moodysRating, String sandPRating, String fitchRating, Integer orderNumber) {
+    public String updateRating(@PathVariable("id") Integer id,@ModelAttribute @Valid RatingDTO ratingDTO,
+                             BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
     	
     	if (result.hasErrors()) {
             return "/rating/update";
         }
     	
-    	model.addAttribute("rating", ratingService.read(id).get());
-    	ratingService.update(id, moodysRating, sandPRating, fitchRating, orderNumber);
+    	ratingService.update(id, ratingDTO);
         return "redirect:/rating/list";
     }
 

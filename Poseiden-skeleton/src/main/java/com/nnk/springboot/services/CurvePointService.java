@@ -13,6 +13,6 @@ public interface CurvePointService
 	public CurvePoint create (CurvePointDTO curvePointDTO);
 	public Optional<CurvePointDTO> read (Integer id);
 	public List<CurvePointDTO> readAll();
-	public CurvePoint update (Integer id, Integer curveId, Double term, Double value);
+	public CurvePoint update (Integer id, CurvePointDTO curvePointDTO);
 	public void delete (Integer id);
 }

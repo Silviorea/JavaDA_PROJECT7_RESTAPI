@@ -6,12 +6,16 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+/**
+ * BidList DATA TRANSFERT OBJECT class which is used to DTO Design Pattern
+ * @author Silvio
+ *
+ */
+
 public class BidListDTO implements Serializable
 {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private Integer bidListId;

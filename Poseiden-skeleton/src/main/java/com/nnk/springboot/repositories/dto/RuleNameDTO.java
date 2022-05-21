@@ -4,12 +4,15 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * RuleName DATA TRANSFERT OBJECT class which is used to DTO Design Pattern
+ * @author Silvio
+ *
+ */
+
 public class RuleNameDTO implements Serializable
 {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;

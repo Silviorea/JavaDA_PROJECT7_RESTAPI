@@ -11,8 +11,7 @@ public interface RuleNameService
 	public RuleName create (RuleNameDTO ruleNameDTO);
 	public Optional<RuleNameDTO> read (Integer id);
 	public List<RuleNameDTO> readAll();
-	public RuleName update (Integer id, String name, String description, String json,
-			String template, String sqlStr, String sqlPart);
+	public RuleName update (Integer id, RuleNameDTO ruleNameDTO);
 	public void delete(Integer id);
 	
 

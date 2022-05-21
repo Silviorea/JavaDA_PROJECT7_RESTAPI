@@ -9,6 +9,13 @@ import javax.validation.constraints.Positive;
 
 import java.sql.Timestamp;
 
+
+/**
+ * BidList ENTITY
+ * @author Silvio
+ *
+ */
+
 @Entity
 @Table(name = "bidlist")
 public class BidList 
@@ -18,14 +25,10 @@ public class BidList
 	@Column(name= "BidListId")
 	private Integer bidListId;
 	
-	@NotEmpty(message = "Account is mandatory")
 	private String account;
 	
-	@NotEmpty(message = "Type is mandatory")
 	private String type;
 	
-	@NotNull(message = "Bid Quantity is mandatory")
-	@Positive(message = "Bid Quantity is positive number")
 	private Double bidQuantity;
 	
 	private Double askQuantity;

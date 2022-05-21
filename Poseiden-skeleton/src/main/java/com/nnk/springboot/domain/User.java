@@ -2,8 +2,14 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 
+/**
+ * User ENTITY
+ * @author Silvio
+ *
+ */
 
 @Entity
 @Table(name = "users")
@@ -14,29 +20,17 @@ public class User {
     private Integer id;
     
     @Column(unique=true)
-    @NotBlank(message = "Username is mandatory")
     private String username;
     
-   
-    @NotBlank(message = "Password is mandatory")
     private String password;
     
-    @NotBlank(message = "FullName is mandatory")
     private String fullname;
-    
-    @NotBlank(message = "Role is mandatory")
+   
     private String role;
 
     
-    
-    
-    
-    
-    
-    public User(@NotBlank(message = "Username is mandatory") String username,
-			@NotBlank(message = "Password is mandatory") String password,
-			@NotBlank(message = "FullName is mandatory") String fullname,
-			@NotBlank(message = "Role is mandatory") String role)
+   
+	public User(String username, String password, String fullname, String role)
 	{
 		super();
 		this.username = username;
@@ -45,19 +39,13 @@ public class User {
 		this.role = role;
 	}
 
-    
-    
-    
-    
-    
+
+
+
 	public User()
 	{
 		super();
 	}
-
-
-
-
 
 
 	public Integer getId() {

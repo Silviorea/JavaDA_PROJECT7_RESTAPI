@@ -13,6 +13,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.nnk.springboot.services.UserService;
 
+/**
+ * SpringSecurity config file
+ * @author Silvio
+ *
+ */
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
@@ -33,27 +39,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				"/home/**",
 				"/",
 				"/login",
-				"/user/list",
-				"/user/delete/*",
-				"/user/add",
-				"/user/validate",
-				"/user/update/*",
 				"/app-logout").permitAll()
+		.antMatchers("/user/*").hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin().defaultSuccessUrl("/bidList/list", true)
-//		.loginPage("/login")
 		.and()
 		.logout()
 		.invalidateHttpSession(true)
 		.clearAuthentication(true)
 		.logoutRequestMatcher(new AntPathRequestMatcher("/app-logout"))
 		.logoutSuccessUrl("/login")
-		
-		
-		.and().oauth2Login().defaultSuccessUrl("/bidList/list", true)
-		
-		;
+		.and().oauth2Login().defaultSuccessUrl("/bidList/list", true);
 	}
 	
 	@Bean

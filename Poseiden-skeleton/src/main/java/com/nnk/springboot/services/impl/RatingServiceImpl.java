@@ -12,6 +12,13 @@ import com.nnk.springboot.repositories.RatingRepository;
 import com.nnk.springboot.repositories.dto.RatingDTO;
 import com.nnk.springboot.services.RatingService;
 
+/**
+ * Implementation of Rating Service Interface.
+ * All of the CRUD methods are defined here
+ * @author Silvio
+ *
+ */
+
 @Service
 public class RatingServiceImpl implements RatingService
 {
@@ -73,14 +80,14 @@ public class RatingServiceImpl implements RatingService
 	
 	
 	@Override
-	public Rating update(Integer id, String moodysRating, String sandPRating, String fitchRating, Integer orderNumber)
+	public Rating update(Integer id, RatingDTO ratingDTO)
 	{
 		Rating rating = ratingRepo.findById(id).get();
 		
-		rating.setMoodysRating(moodysRating);
-		rating.setSandPRating(sandPRating);
-		rating.setFitchRating(fitchRating);
-		rating.setOrderNumber(orderNumber);
+		rating.setMoodysRating(ratingDTO.getMoodysRating());
+		rating.setSandPRating(ratingDTO.getSandPRating());
+		rating.setFitchRating(ratingDTO.getFitchRating());
+		rating.setOrderNumber(ratingDTO.getOrderNumber());
 		
 		ratingRepo.save(rating);
 		

@@ -15,7 +15,7 @@
 
 		<div class="row">
 			<form action="#" th:action="@{/rating/validate}"
-				th:object="${rating}" method="post" class="form-horizontal"
+				th:object="${ratingDTO}" method="post" class="form-horizontal"
 				style="width: 100%">
 				<!--
 			TODO: Create a form to input the values of Rating, there are 2 buttons: Save data and Cancel to the list Rating
@@ -23,7 +23,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{moodysRating}"
-						placeholder="moodysRating" required autofocus="autofocus">
+						placeholder="moodysRating" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('moodysRating')}"
 						th:errors="*{moodysRating}"></p>
 
@@ -31,7 +31,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{sandPRating}"
-						placeholder="sandPRating" required autofocus="autofocus">
+						placeholder="sandPRating" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('sandPRating')}"
 						th:errors="*{sandPRating}"></p>
 
@@ -39,7 +39,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{fitchRating}"
-						placeholder="fitchRating" required autofocus="autofocus">
+						placeholder="fitchRating" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('fitchRating')}"
 						th:errors="*{fitchRating}"></p>
 
@@ -47,7 +47,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{orderNumber}"
-						placeholder="orderNumber" required autofocus="autofocus">
+						placeholder="orderNumber" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('orderNumber')}"
 						th:errors="*{orderNumber}"></p>
 				</div>

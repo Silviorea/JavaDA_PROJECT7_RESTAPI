@@ -52,8 +52,8 @@ public class RatingServiceTest
 	public void updateTestMethod() throws Exception
 	{
 		when(repo.findById(1)).thenReturn(Optional.of(test));
-		Rating update = service.update(1, "ModdyTest2", "SandTest2", "FitchTest2", 1);
-		assertTrue(update.getMoodysRating().equals("ModdyTest2"));
+		Rating update = service.update(1, dTOTest);
+		assertTrue(update.getMoodysRating().equals("ModdyTest"));
 
 	}
 	

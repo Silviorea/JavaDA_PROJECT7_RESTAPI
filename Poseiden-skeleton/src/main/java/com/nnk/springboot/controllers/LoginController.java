@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * 
+ * Login Controller wich display the login form
+ * @author Silvio
+ *
+ */
+
 @Controller
 @RequestMapping("app")
 public class LoginController {

@@ -15,7 +15,7 @@
 
 		<div class="row">
 			<form action="#" th:action="@{/ruleName/validate}"
-				th:object="${ruleName}" method="post" class="form-horizontal"
+				th:object="${ruleNameDTO}" method="post" class="form-horizontal"
 				style="width: 100%">
 				<!--
 			TODO: Create a form to input the values of RuleName, there are 2 buttons: Save data and Cancel to the list RuleName
@@ -23,7 +23,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{name}"
-						placeholder="Name" required autofocus="autofocus">
+						placeholder="Name" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('name')}"
 						th:errors="*{name}"></p>
 
@@ -32,7 +32,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{description}"
-						placeholder="Description" required autofocus="autofocus">
+						placeholder="Description" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('description')}"
 						th:errors="*{description}"></p>
 
@@ -42,7 +42,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{json}"
-						placeholder="Json" required autofocus="autofocus">
+						placeholder="Json" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('json')}"
 						th:errors="*{json}"></p>
 
@@ -50,7 +50,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{template}"
-						placeholder="Template" required autofocus="autofocus">
+						placeholder="Template" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('template')}"
 						th:errors="*{template}"></p>
 
@@ -58,7 +58,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{sqlStr}"
-						placeholder="SqlStr" required autofocus="autofocus">
+						placeholder="SqlStr" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('sqlStr')}"
 						th:errors="*{sqlStr}"></p>
 
@@ -66,7 +66,7 @@
 
 				<div>
 					<input class="form-control mb-4" th:field="*{sqlPart}"
-						placeholder="SqlPart" required autofocus="autofocus">
+						placeholder="SqlPart" autofocus="autofocus">
 					<p class="text-danger" th:if="${#fields.hasErrors('sqlPart')}"
 						th:errors="*{sqlPart}"></p>
 
@@ -78,7 +78,7 @@
 				<div class="col-sm-12">
 					<input type="hidden" th:field="*{id}">
 					<a class="btn btn-danger btn-sm" href="/ruleName/list">Cancel</a>
-					<input class="btn btn-primary btn-sm" type="submit" value="Update Rule">
+					<input class="btn btn-primary btn-sm" type="submit" value="Create Rule">
 				</div>
 			</div>
 

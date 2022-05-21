@@ -22,29 +22,34 @@ import com.nnk.springboot.repositories.UserRepository;
 import com.nnk.springboot.repositories.dto.UserDTO;
 import com.nnk.springboot.services.UserService;
 
+/**
+ * Implementation of USER Service Interface.
+ * All of the CRUD methods are defined here
+ * 
+ * loadUserByUsername Method which used to LogIn whith Username in 
+ * SpringSecurity Login Form
+ * 
+ * @author Silvio
+ *
+ */
+
 @Service
 public class UserServiceImpl implements UserService
 {
 	@Autowired
 	UserRepository userRepository;
-	
-
 
 	@Override
 	public User create(UserDTO userDTO)
 	{
-		
+
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		
-		User newUser = new User(
-				userDTO.getUsername(),
-				passwordEncoder.encode(userDTO.getPassword()),
-				userDTO.getFullname(),
-				userDTO.getRole());
-		
-		
+
+		User newUser = new User(userDTO.getUsername(), passwordEncoder.encode(userDTO.getPassword()),
+				userDTO.getFullname(), userDTO.getRole());
+
 		userRepository.save(newUser);
-		
+
 		return newUser;
 	}
 
@@ -52,30 +57,24 @@ public class UserServiceImpl implements UserService
 	public Optional<UserDTO> read(Integer id)
 	{
 		User user = userRepository.findById(id).get();
-		
-		UserDTO userDTO = new UserDTO(
-				user.getId(),
-				user.getUsername(),
-				user.getPassword(),
-				user.getFullname(),
+
+		UserDTO userDTO = new UserDTO(user.getId(), user.getUsername(), user.getPassword(), user.getFullname(),
 				user.getRole());
-		
+
 		return Optional.of(userDTO);
 	}
-	
-
 
 	@Override
-	public User update(Integer id, String userName, String fullName, String password, String role)
+	public User update(Integer id, UserDTO userDTO)
 	{
 		User user = userRepository.findById(id).get();
-		user.setUsername(userName);
-		user.setFullname(fullName);
-		user.setPassword(password);
-		user.setRole(role);
-		
+		user.setUsername(userDTO.getUsername());
+		user.setFullname(userDTO.getFullname());
+		user.setPassword(userDTO.getPassword());
+		user.setRole(userDTO.getRole());
+
 		userRepository.save(user);
-		
+
 		return user;
 	}
 
@@ -83,7 +82,7 @@ public class UserServiceImpl implements UserService
 	public void delete(Integer id)
 	{
 		userRepository.deleteById(id);
-		
+
 	}
 
 	@Override
@@ -91,52 +90,39 @@ public class UserServiceImpl implements UserService
 	{
 		List<User> list = userRepository.findAll();
 		List<UserDTO> listDTO = new ArrayList<>();
-		
+
 		for (User userList : list)
 		{
-			listDTO.add( new UserDTO(
-					userList.getId(),
-					userList.getUsername(),
-					userList.getPassword(),
-					userList.getFullname(),
-					userList.getRole()));
+			listDTO.add(new UserDTO(userList.getId(), userList.getUsername(), userList.getPassword(),
+					userList.getFullname(), userList.getRole()));
 		}
-		
+
 		return listDTO;
 	}
 
 	
-	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
-		
+
 		User user = userRepository.findByUsername(username);
-		
+
 		if (user == null)
 		{
 			throw new UsernameNotFoundException("Invalid username or invalid Password");
-		} 
-		return new org.springframework.security.core.userdetails.User
-				(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRole()));
-		
-		
+		}
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+				mapRolesToAuthorities(user.getRole()));
+
 	}
-	
-	
-	private Collection <? extends GrantedAuthority> mapRolesToAuthorities (String role)
+
+	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(String role)
 	{
-		
-//		roles.stream()
-//		.map( role -> new SimpleGrantedAuthority(roles))
-//		.collect(Collectors.toList());
-		
-		
+
 		List<SimpleGrantedAuthority> authorithies = new ArrayList<>();
-	    authorithies.add(new SimpleGrantedAuthority(role));
+		authorithies.add(new SimpleGrantedAuthority(role));
 		return authorithies;
-		
-		
+
 	}
 
 }

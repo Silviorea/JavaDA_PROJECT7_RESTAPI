@@ -12,6 +12,13 @@ import com.nnk.springboot.repositories.RuleNameRepository;
 import com.nnk.springboot.repositories.dto.RuleNameDTO;
 import com.nnk.springboot.services.RuleNameService;
 
+/**
+ * Implementation of RuleName Service Interface.
+ * All of the CRUD methods are defined here
+ * @author Silvio
+ *
+ */
+
 @Service
 public class RuleNameServiceImpl implements RuleNameService	
 {
@@ -81,17 +88,16 @@ public class RuleNameServiceImpl implements RuleNameService
 	
 
 	@Override
-	public RuleName update(Integer id, String name, String description, 
-			String json, String template, String sqlStr,String sqlPart)
+	public RuleName update(Integer id, RuleNameDTO ruleNameDTO)
 	{
 		
 		RuleName ruleName = ruleNameRepo.findById(id).get();
-		ruleName.setName(name);
-		ruleName.setDescription(description);
-		ruleName.setJson(json);
-		ruleName.setTemplate(template);
-		ruleName.setSqlStr(sqlStr);
-		ruleName.setSqlPart(sqlPart);
+		ruleName.setName(ruleNameDTO.getName());
+		ruleName.setDescription(ruleNameDTO.getDescription());
+		ruleName.setJson(ruleNameDTO.getJson());
+		ruleName.setTemplate(ruleNameDTO.getTemplate());
+		ruleName.setSqlStr(ruleNameDTO.getSqlStr());
+		ruleName.setSqlPart(ruleNameDTO.getSqlPart());
 		
 		ruleNameRepo.save(ruleName);
 		

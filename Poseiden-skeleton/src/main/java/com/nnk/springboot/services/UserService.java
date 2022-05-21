@@ -10,11 +10,13 @@ import com.nnk.springboot.repositories.dto.UserDTO;
 
 public interface UserService extends UserDetailsService
 {
-	public User create (UserDTO userDTO);
+	public User create(UserDTO userDTO);
+
 	public Optional<UserDTO> read(Integer id);
-	public User update(Integer userID, String userName, String fullName, String password, String role);
-	public void delete (Integer userID);
+
+	public User update(Integer id, UserDTO userDTO);
+
+	public void delete(Integer userID);
+
 	public List<UserDTO> readAll();
-	
-	
 }

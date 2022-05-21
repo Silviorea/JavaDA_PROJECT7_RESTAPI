@@ -1,14 +1,15 @@
 package com.nnk.springboot.domain;
 
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 
 import java.sql.Timestamp;
 
+/**
+ * CurvePoint ENTITY
+ * @author Silvio
+ *
+ */
 
 @Entity
 @Table(name = "curvepoint")
@@ -18,18 +19,12 @@ public class CurvePoint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotNull(message = "Id is mandatory")
-	@Positive(message = "Id is positive number")
 	private Integer curveId;
 
 	private Timestamp asOfDate;
 	
-	@NotNull(message = "Term is mandatory")
-	@Positive(message = "Term is positive number")
 	private Double term;
 	
-	@NotNull(message = "Value is mandatory")
-	@Positive(message = "Value is positive number")
 	private Double value;
 	
 	private Timestamp creationDate;

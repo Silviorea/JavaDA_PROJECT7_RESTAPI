@@ -12,6 +12,13 @@ import com.nnk.springboot.repositories.CurvePointRepository;
 import com.nnk.springboot.repositories.dto.CurvePointDTO;
 import com.nnk.springboot.services.CurvePointService;
 
+/**
+ * Implementation of CurvePoint Service Interface.
+ * All of the CRUD methods are defined here
+ * @author Silvio
+ *
+ */
+
 @Service
 public class CurvePointServiceImpl implements CurvePointService
 {
@@ -68,12 +75,13 @@ public class CurvePointServiceImpl implements CurvePointService
 	}
 
 	@Override
-	public CurvePoint update(Integer id, Integer curveId, Double term, Double value)
+	public CurvePoint update(Integer id, CurvePointDTO curvePointDTO)
 	{
 		CurvePoint curvePoint = curvePointRepo.findById(id).get();
-		curvePoint.setCurveId(curveId);
-		curvePoint.setTerm(term);
-		curvePoint.setValue(value);
+		
+		curvePoint.setCurveId(curvePointDTO.getCurveId());
+		curvePoint.setTerm(curvePointDTO.getTerm());
+		curvePoint.setValue(curvePointDTO.getValue());
 		
 		curvePointRepo.save(curvePoint);
 		

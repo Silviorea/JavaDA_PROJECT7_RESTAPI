@@ -51,8 +51,8 @@ public class TradeServiceTest
 	public void updateTestMethod() throws Exception
 	{
 		when(repo.findById(1)).thenReturn(Optional.of(test));
-		Trade update = service.update(1, "AccountUPDATE", "Type", 1.0);
-		assertTrue(update.getAccount().equals("AccountUPDATE"));
+		Trade update = service.update(1, dTOTest);
+		assertTrue(update.getAccount().equals("Account"));
 
 	}
 	

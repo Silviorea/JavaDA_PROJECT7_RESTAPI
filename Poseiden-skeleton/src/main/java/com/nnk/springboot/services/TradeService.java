@@ -11,7 +11,7 @@ public interface TradeService
 	public Trade create (TradeDTO tradeDTO);
 	public Optional<TradeDTO> read (Integer id);
 	public List<TradeDTO> readAll ();
-	public Trade update(Integer id, String account, String type, Double buyQuantity);
+	public Trade update(Integer id, TradeDTO tradeDTO);
 	public void delete (Integer id);
 	
 }

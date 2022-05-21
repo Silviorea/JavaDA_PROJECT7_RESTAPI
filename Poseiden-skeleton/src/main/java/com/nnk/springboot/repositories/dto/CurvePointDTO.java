@@ -6,12 +6,16 @@ import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+/**
+ * CurvePoint DATA TRANSFERT OBJECT class which is used to DTO Design Pattern
+ * @author Silvio
+ *
+ */
+
 public class CurvePointDTO implements Serializable
 {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;

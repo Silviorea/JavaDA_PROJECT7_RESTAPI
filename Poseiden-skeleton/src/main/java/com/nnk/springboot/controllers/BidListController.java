@@ -1,6 +1,5 @@
 package com.nnk.springboot.controllers;
 
-import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.dto.BidListDTO;
 import com.nnk.springboot.services.BidListService;
 
@@ -13,10 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+/**
+ * BidList Controller class which call Services crud methods
+ * @author Silvio
+ *
+ */
 
 @Controller
 public class BidListController
@@ -35,13 +38,13 @@ public class BidListController
 	}
 
 	@GetMapping("/bidList/add")
-	public String addBidForm(BidList bid)
+	public String addBidForm(BidListDTO bidListDTO)
 	{
 		return "bidList/add";
 	}
 
 	@PostMapping("/bidList/validate") // OK //
-	public String validate(@Valid BidListDTO bidList, BindingResult result, Model model)
+	public String validate(@Valid BidListDTO bidListDTO, BindingResult result, Model model)
 	{
 		// TODO: check data valid and save to db, after saving return bid list
 
@@ -49,27 +52,22 @@ public class BidListController
 		{
 			return "bidList/add";
 		}
-		model.addAttribute("bidList", bidList);
-		bidListService.create(bidList);
-
-		return "bidList/add";
+		bidListService.create(bidListDTO);
+		return "redirect:/bidList/list";
 	}
 
 	@PostMapping("/bidList/update/{id}")
-	public String updateBid(@PathVariable("id") Integer id, @ModelAttribute @Valid BidListDTO bid, 
+	public String updateBid(@PathVariable("id") Integer id, @ModelAttribute @Valid BidListDTO bidListDTO, 
 			BindingResult result, Model model)
 	{
 		// TODO: check required fields, if valid call service to update Bid and return
-		// list Bid
-
+		
 		if (result.hasErrors())
 		{
-	//		model.addAttribute("bidList", bidListDTO);
 			return "bidList/update";
 		}
 
-		// model.addAttribute("bidList", bid);
-		bidListService.update(id, bid);
+		bidListService.update(id, bidListDTO);
 		return "redirect:/bidList/list";
 	}
 
@@ -78,7 +76,7 @@ public class BidListController
 	{
 		// TODO: get Bid by Id and to model then show to the form
 
-		model.addAttribute("bid", bidListService.read(id).get());
+		model.addAttribute("bidListDTO", bidListService.read(id).get());
 
 		return "bidList/update";
 	}

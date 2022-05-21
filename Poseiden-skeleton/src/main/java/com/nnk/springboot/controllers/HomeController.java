@@ -5,11 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Home Controller class wich display the home page
+ * 
+ * @author Silvio
+ *
+ */
+
 @Controller
 public class HomeController
 {
-	
-	
+
 	@GetMapping("/")
 	public String home(Model model)
 	{
@@ -21,13 +27,5 @@ public class HomeController
 	{
 		return "redirect:/bidList/list";
 	}
-	
-//	@GetMapping("/app-logout")
-//	public String logout(Model model)
-//	{
-//		return "home";
-//	}
-	
-
 
 }

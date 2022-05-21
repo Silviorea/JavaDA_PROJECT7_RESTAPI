@@ -8,6 +8,12 @@ import javax.validation.constraints.Positive;
 
 import java.sql.Timestamp;
 
+/**
+ * Rating ENTITY
+ * @author Silvio
+ *
+ */
+
 @Entity
 @Table(name = "rating")
 public class Rating {
@@ -16,17 +22,12 @@ public class Rating {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message = "Moodys Rating is mandatory")
 	private String moodysRating;
 	
-	@NotEmpty(message = "Sand Rating is mandatory")
 	private String sandPRating;
 	
-	@NotEmpty(message = "Fitch Rating is mandatory")
 	private String fitchRating;
 	
-	@NotNull(message = "Bid Quantity is mandatory")
-	@Positive(message = "Bid Quantity is positive number")
 	private Integer orderNumber;
 	
 	

@@ -14,6 +14,13 @@ import com.nnk.springboot.repositories.dto.BidListDTO;
 import com.nnk.springboot.repositories.dto.UserDTO;
 import com.nnk.springboot.services.BidListService;
 
+/**
+ * Implementation of BidList Service Interface.
+ * All of the CRUD methods are defined here
+ * @author Silvio
+ *
+ */
+
 @Service
 public class BidListServiceImpl implements BidListService
 {
@@ -86,10 +93,6 @@ public class BidListServiceImpl implements BidListService
 	{
 		BidList bidList = bidListRepository.findById(bidListID).get();
 		
-		// blDTO.setBidListId(bidListID);
-		
-		//bidList.setBidListId(blDTO.getBidListId());
-		
 		bidList.setAccount(blDTO.getAccount());
 		bidList.setType(blDTO.getType());
 		bidList.setBidQuantity(blDTO.getBidQuantity());
@@ -99,19 +102,6 @@ public class BidListServiceImpl implements BidListService
 		return bidList;
 	}
 	
-	
-//	@Override
-//	public BidList update(Integer bidListID, String account, String type, Double bidQuantity)
-//	{
-//		BidList bidList = bidListRepository.findById(bidListID).get();
-//		bidList.setAccount(account);
-//		bidList.setType(type);
-//		bidList.setBidQuantity(bidQuantity);
-//		
-//		bidListRepository.save(bidList);
-//		
-//		return bidList;
-//	}
 	
 
 }

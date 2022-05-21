@@ -49,8 +49,8 @@ public class RuleNameServiceTest
 	public void updateTestMethod() throws Exception
 	{
 		when(repo.findById(1)).thenReturn(Optional.of(test));
-		RuleName update = service.update(1, "nameUPDATE", "description", "Json", "Template", "SqlStr", "SqlPart");
-		assertTrue(update.getName().equals("nameUPDATE"));
+		RuleName update = service.update(1, dTOTest);
+		assertTrue(update.getName().equals("name"));
 
 	}
 	

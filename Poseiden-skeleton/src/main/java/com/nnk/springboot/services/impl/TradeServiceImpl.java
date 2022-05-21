@@ -12,6 +12,13 @@ import com.nnk.springboot.repositories.TradeRepository;
 import com.nnk.springboot.repositories.dto.TradeDTO;
 import com.nnk.springboot.services.TradeService;
 
+/**
+ * Implementation of Trade Service Interface.
+ * All of the CRUD methods are defined here
+ * @author Silvio
+ *
+ */
+
 @Service
 public class TradeServiceImpl implements TradeService
 {
@@ -68,13 +75,13 @@ public class TradeServiceImpl implements TradeService
 	}
 
 	@Override
-	public Trade update(Integer id, String account, String type, Double buyQuantity)
+	public Trade update(Integer id, TradeDTO tradeDTO)
 	{
 		Trade trade = tradeRepo.findById(id).get();
 		
-		trade.setAccount(account);
-		trade.setType(type);
-		trade.setBuyQuantity(buyQuantity);
+		trade.setAccount(tradeDTO.getAccount());
+		trade.setType(tradeDTO.getType());
+		trade.setBuyQuantity(tradeDTO.getBuyQuantity());
 		
 		tradeRepo.save(trade);
 		

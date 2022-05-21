@@ -14,22 +14,22 @@
 	</div>
 
 	<div class="row">
-		<form action="#" th:action="@{/curvePoint/validate}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
+		<form action="#" th:action="@{/curvePoint/validate}" th:object="${curvePointDTO}" method="post" class="form-horizontal" style="width: 100%">
 			<!--
 			TODO: Create a form to input the values of CurvePoint, there are 2 buttons: Save data and Cancel to the list CurvePoint
 			 -->
 			 <div>
-			 		<input class="form-control mb-4" th:field="*{curveId}" placeholder="ID" required autofocus="autofocus" >
+			 		<input class="form-control mb-4" th:field="*{curveId}" placeholder="ID" autofocus="autofocus" >
 					<p class="text-danger" th:if="${#fields.hasErrors('curveId')}" th:errors="*{curveId}"></p>
 			 </div>
 			 
 			<div>
-					<input class="form-control mb-4" th:field="*{term}" placeholder="Term" required autofocus="autofocus" >
+					<input class="form-control mb-4" th:field="*{term}" placeholder="Term" autofocus="autofocus" >
 					<p class="text-danger" th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></p>
 			</div>	
 				
 			<div>
-					<input class="form-control mb-4" th:field="*{value}" placeholder="Value" required autofocus="autofocus" >
+					<input class="form-control mb-4" th:field="*{value}" placeholder="Value" autofocus="autofocus" >
 					<p class="text-danger" th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
 			</div>				
 			

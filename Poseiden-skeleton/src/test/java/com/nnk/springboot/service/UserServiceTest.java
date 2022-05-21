@@ -49,8 +49,8 @@ public class UserServiceTest
 	public void updateTestMethod() throws Exception
 	{
 		when(repo.findById(1)).thenReturn(Optional.of(test));
-		User update = service.update(1, "UserNameUPDATE", "Password", "FullName", "Admin");
-		assertTrue(update.getUsername().equals("UserNameUPDATE"));
+		User update = service.update(1, dTOTest);
+		assertTrue(update.getUsername().equals("UserName"));
 	}
 
 	@Test
@@ -79,18 +79,6 @@ public class UserServiceTest
 
 	}
 
-//	public void loadUserByUsernameTest()
-//	{
-//		test.setUsername("UserName");
-//		test.setPassword("password");
-//		
-//		when(repo.findByUsername("UserName")).thenReturn(test);
-//
-//		UserDetails userDetails = service.loadUserByUsername("UserName");
-//
-//		assertTrue(userDetails.getUsername().equals(test.getUsername()));
-//		assertTrue(userDetails.getPassword().equals(test.getPassword()));
-//	}
 
 	@Test
 	public void deleteTestMethod() throws Exception

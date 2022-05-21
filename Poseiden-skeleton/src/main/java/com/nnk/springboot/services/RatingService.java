@@ -11,8 +11,7 @@ public interface RatingService
 	public Rating create (RatingDTO ratingDTO);
 	public Optional<RatingDTO> read (Integer id);
 	public List<RatingDTO> readAll();
-	public Rating update(Integer id, String moodysRating, String sandPRating,
-			String fitchRating, Integer orderNumber);
+	public Rating update(Integer id, RatingDTO ratingDTO);
 	public void delete (Integer id);
 	
 	
