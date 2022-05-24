@@ -36,6 +36,8 @@ public class RatingServiceImpl implements RatingService
 		
 		ratingRepo.save(newRating);
 		
+		ratingDTO.setId(newRating.getId());
+		
 		return newRating;
 	}
 

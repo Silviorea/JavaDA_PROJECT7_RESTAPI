@@ -72,6 +72,8 @@ public class UserServiceImpl implements UserService
 		user.setFullname(userDTO.getFullname());
 		user.setPassword(userDTO.getPassword());
 		user.setRole(userDTO.getRole());
+		
+		userDTO.setId(id);
 
 		userRepository.save(user);
 

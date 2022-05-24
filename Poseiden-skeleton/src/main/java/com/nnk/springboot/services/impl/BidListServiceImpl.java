@@ -39,6 +39,8 @@ public class BidListServiceImpl implements BidListService
 				bidListDTO.getBidQuantity());
 		bidListRepository.save(newBidList);
 		
+		bidListDTO.setBidListId(newBidList.getBidListId());
+		
 		return newBidList;
 	}
 	

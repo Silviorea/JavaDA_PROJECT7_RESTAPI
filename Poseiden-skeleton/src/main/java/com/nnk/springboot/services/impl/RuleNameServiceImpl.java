@@ -40,6 +40,8 @@ public class RuleNameServiceImpl implements RuleNameService
 		
 		ruleNameRepo.save(newRuleName);
 		
+		ruleNameDTO.setId(newRuleName.getId());
+		
 		return newRuleName;
 	}
 	

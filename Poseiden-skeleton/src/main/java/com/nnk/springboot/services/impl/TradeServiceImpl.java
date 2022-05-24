@@ -37,6 +37,8 @@ public class TradeServiceImpl implements TradeService
 		
 		tradeRepo.save(newTrade);
 		
+		tradeDTO.setTradeId(newTrade.getTradeId());
+		
 		return newTrade;
 	}
 

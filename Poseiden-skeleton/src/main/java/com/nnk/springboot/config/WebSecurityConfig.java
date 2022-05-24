@@ -36,11 +36,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	public void configure(HttpSecurity http) throws Exception
 	{
 		http.authorizeRequests().antMatchers(
+				"/css/**",
 				"/home/**",
 				"/",
 				"/login",
-				"/app-logout").permitAll()
-		.antMatchers("/user/*").hasAuthority("ADMIN")
+				"/app-logout"
+				).permitAll()
+		.antMatchers(
+				"/user/*"
+				).hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin().defaultSuccessUrl("/bidList/list", true)

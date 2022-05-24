@@ -36,6 +36,8 @@ public class CurvePointServiceImpl implements CurvePointService
 		
 		curvePointRepo.save(newCurvePoint);
 		
+		curvePointDTO.setId(newCurvePoint.getId());
+		
 		return newCurvePoint;
 	}
 
